@@ -415,3 +415,34 @@ information, because the reference already contains it.
   Amendment 9 *because* it matches real covariance.
 - So the prior is **correct but redundant** given enough data. Without that data (30 cells alone), it is correct but too
   weak to beat kNN.
+
+## 2026-10-22 · v7 confirmation on the brunner2022 holdout (Amendment 14): **H14 CONFIRMED, 6/6 primary** (`results/confirm_v7/confirm_v7.json`)
+**Setup:**
+- HeLa, timsTOF DIA, 434 cells; 30-cell subsamples (6 per cell-cycle group), seeds 7000–7009.
+- Reference: 16 public single-cell datasets + CCLE + ProteomeHD (9,695 samples). 99.9% of brunner proteins have
+  reference loadings, and 62% of proteins are complex members.
+
+| In-complex RMSE, `stack3_plain` vs | MCAR (Δ%, 95% CI of ΔRMSE) | MNAR |
+|---|---|---|
+| kNN (0.457 / 0.605) | **−5.99%** [−0.036, −0.020] ✅ | **−8.88%** [−0.057, −0.050] ✅ |
+| kNN + low-rank stack | **−2.44%** [−0.015, −0.007] ✅ | **−5.42%** [−0.034, −0.029] ✅ |
+| permuted-reference null | **−2.51%** [−0.015, −0.008] ✅ | **−4.30%** [−0.027, −0.022] ✅ |
+
+**Secondary:**
+- Overall RMSE passes all six too: −4.9 / −7.9% vs kNN, −1.9 / −4.9% vs the stack, −1.9 / −3.7% vs the null.
+- **Curated-complex-specific:** BIM vs `stack3_plain` is −0.17% / −0.06%, with CIs including 0. BIM vs `bim_null` is
+  −0.54% / −0.34%, CIs including 0. **Not significant.**
+- The stack weights gave the reference projection 0.5–0.75 in all 20 subsamples.
+
+**What is and isn't shown:**
+- ✅ **Empirical biological prior knowledge transfers.** Protein co-regulation learned from public single-cell and bulk
+  proteomics, combined with kNN and low-rank, imputes an unseen dataset of a different technology substantially better
+  than the best data-only method and than a reference with scrambled protein identities. This holds on complex members
+  and overall.
+- ❌ **Curated complex membership adds nothing measurable** on top of that empirical prior.
+- ⚠️ **Caveats:**
+  - H14 was refined after dev results (Amendment 14).
+  - On the earlier holdout khan2023 (MCF-10A, Amendment 12, overall endpoint), the closely related `stack3_big` gained
+    only 0.2–0.6% over the kNN + low-rank stack and did not pass. **So the effect replicates on 1 of 2 holdouts, and its
+    size likely depends on dataset and reference similarity.**
+  - Only 7 HeLa single cells are in the reference. We did not check the cell-line composition of ProteomeHD.
