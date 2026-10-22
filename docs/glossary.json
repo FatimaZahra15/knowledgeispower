@@ -1670,5 +1670,103 @@
     "link_check": "The DOI matches Schein et al.'s Methods and Metrics for Cold-Start Recommendations."
   }
 
+  
+[
+  {
+    "term": "preregistration",
+    "aka": [
+      "pre-registration",
+      "preregistered analysis"
+    ],
+    "category": "methods",
+    "who": "Researchers who specify an analysis plan before examining the results used to evaluate a hypothesis.",
+    "why": "Preregistration helps distinguish planned confirmatory tests from exploratory or post-hoc analyses.",
+    "how": "Record the hypothesis, comparison, outcome measure, success threshold, and analysis procedure before evaluating the results.",
+    "what": "A documented analysis plan established before the relevant results are examined.",
+    "example": "A study specifies its primary comparisons and success criteria in advance, then reports whether each criterion was met.",
+    "links": [
+      {
+        "label": "OSF: Preregistration",
+        "url": "https://www.cos.io/initiatives/prereg"
+      }
+    ],
+    "related": [
+      "hypothesis",
+      "confirmatory analysis",
+      "post-gate test"
+    ]
+  },
+  {
+    "term": "reference panel",
+    "aka": [
+      "reference dataset panel",
+      "reference set"
+    ],
+    "category": "methods",
+    "who": "Researchers evaluating models that use reference measurements or reference loadings.",
+    "why": "The choice and size of a reference can affect how well information transfers to target data.",
+    "how": "Use a defined collection of reference datasets or samples to provide measurements or loadings for comparison and transfer.",
+    "what": "A collection of reference datasets or samples used to support model comparison, projection, or transfer.",
+    "example": "The exploration log describes a reference comprising 17 datasets plus bulk panels, with 10,129 samples and 4,096 proteins.",
+    "links": [
+      {
+        "label": "Knowledge Is Power: Exploration Log",
+        "url": "https://github.com/xX-its-amit-Xx/knowledgeispower/blob/claude/happy-hamilton-kdexid/docs/EXPLORATION_LOG.md"
+      }
+    ],
+    "related": [
+      "transferability",
+      "reference projection"
+    ]
+  },
+  {
+    "term": "transfer / reference projection",
+    "aka": [
+      "reference projection",
+      "transfer projection"
+    ],
+    "category": "methods",
+    "who": "Researchers applying information from a reference to target samples or measurements.",
+    "why": "Projection from a reference may improve predictions when target data are limited, but the benefit depends on the dataset and reference used.",
+    "how": "Project target data using reference-derived information and evaluate the resulting predictions against the specified comparator and success criteria.",
+    "what": "A procedure for applying information represented in a reference to target data for prediction or comparison.",
+    "example": "The exploration log reports that a bigger reference strengthened transfer on Petrosius, while the projection weight for stack3_big approached zero at 200 cells.",
+    "links": [
+      {
+        "label": "Knowledge Is Power: Exploration Log",
+        "url": "https://github.com/xX-its-amit-Xx/knowledgeispower/blob/claude/happy-hamilton-kdexid/docs/EXPLORATION_LOG.md"
+      }
+    ],
+    "related": [
+      "reference panel",
+      "transferability",
+      "low-rank completion"
+    ]
+  },
+  {
+    "term": "post-gate test",
+    "aka": [
+      "post-gate confirmation"
+    ],
+    "category": "evaluation",
+    "who": "Researchers checking a previously specified hypothesis or criterion on a designated holdout.",
+    "why": "A post-gate confirmation helps determine whether a result meets the stated criteria without changing the rules after observing the outcome.",
+    "how": "Run the designated confirmation procedure, report the primary outcomes against the predefined criteria, and distinguish confirmation from exploratory observations.",
+    "what": "A confirmation test conducted after a defined evaluation gate, using the specified holdout and decision criteria.",
+    "example": "The 2026-10-22 exploration log records a v6 confirmation on the khan2023 holdout and reports H12 as not confirmed, with 3 of 8 primary criteria confirmed.",
+    "links": [
+      {
+        "label": "Knowledge Is Power: Exploration Log",
+        "url": "https://github.com/xX-its-amit-Xx/knowledgeispower/blob/claude/happy-hamilton-kdexid/docs/EXPLORATION_LOG.md"
+      }
+    ],
+    "related": [
+      "preregistration",
+      "confirmatory analysis",
+      "hypothesis"
+    ]
+  }
+]
+
 
 ]
